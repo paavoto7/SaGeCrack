@@ -16,12 +16,22 @@ def typpe(type):
 
 
 def cracker(passw, type):
+    
+    # Check if the user input is valid
+    if type == 3:
+        return "Error", 405
+    if passw == '':
+        return "Error", 405
+
     # Specify the type of the passwords for more accurate simulation
     tyyppi = typpe(type)
     # Convert password into tuple
     pWord = tuple(passw)
+
+
     # Start a counter to measure the time to crack the password
     start = perf_counter()
+    
     # Loop through all the combinations
     for i in product(tyyppi, repeat=len(passw)):
         # Check against the password
@@ -32,9 +42,12 @@ def cracker(passw, type):
             elapsed = end-start
             # convert the tuple to string
             ret = ''.join(i)
+            # Check if the time is under 0.1 seconds
+            if round(elapsed, 2) < 0.1:
+                return ret, "Instant"
             return ret, round(elapsed,2)
     # If no match is found i.e. wrong type
-    return "Error", 404 
+    return "Error", 405 
 
 
 # def generator(type, length):

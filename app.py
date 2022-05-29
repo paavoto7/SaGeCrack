@@ -20,17 +20,11 @@ def crack():
 @app.route("/cracked")
 def cracked():
     passw = request.args.get("passw", default='')
-    type = request.args.get("type", default=3, type=int)
-    # Check if password provided
-    if passw == '':
-       return redirect("/cracker")
-
-    # Check if type provided
-    if type == 3:
-       return redirect("/cracker")
+    type = request.args.get("type", type=int)
 
     # Hand the information to the cracker function    
     past = cracker(passw, type)
+    # Jsonify the result for jquery
     return jsonify(result=past[0], time=past[1])
 
 

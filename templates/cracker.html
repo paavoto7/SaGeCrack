@@ -10,17 +10,18 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Hello world</h1>
-    <input type="text" name="crackp" placeholder="Password" autocomplete="off" required>
-    <select required name="type">
-        <option disabled selected>Type</option>
-        <option value="0">All</option>
-        <option value="1">Digits</option>
-        <option value="2">Letters</option>
-    </select>
-    <button id="subm" type="submit">Submit</button>
+    <div id="inp">
+        <input type="text" name="crackp" placeholder="Password" autocomplete="off" required>
+        <select required name="type">
+            <option disabled selected value="3">Type</option>
+            <option value="0">All</option>
+            <option value="1">Digits</option>
+            <option value="2">Letters</option>
+        </select>
+        <button id="subm" onclick="disable()" type="submit">Submit</button>
+    </div>
     <div id="grah">
-        <h1 id="result">{{ result }}</h1>
-        <p id="time">{{ time }}</p>
+        <input readonly id="result">
+        <p id="time"></p>
     </div>
 {% endblock %}

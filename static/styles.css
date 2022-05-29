@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 
 #time {
     color:darkorange;
@@ -6,19 +8,29 @@
 }
 
 #result {
+    text-align: center;
+    width: 80%;
+    margin-top: 5%;
+    height: 40vh;
     font-size: clamp(.5vw,4rem,5rem);
+    background-color: #c9c9c9;
 }
 
 #grah {
-    width: 50%;
+    float: right;
+    top: 5px;
+    width: 70%;
+    height: 80vh;
     text-align: center; 
-    display: block;
-    position: absolute;
-    left: 25%;
-    right: 25%;
     background-color: rgba(6, 56, 78, 0.7);
-    margin: 2vw;
+    margin: 5%;
     overflow: hidden;
+}
+
+#inp {
+    margin-top: 5vh;
+    float: left;
+    width: 10%;
 }
 
 .closebtn {
@@ -26,9 +38,15 @@
     right: 10px;
     top: 0px;
     cursor: pointer;
-    float: right;
+    float: left;
     font-size: 40px;
     font-weight: bold;
+}
+
+.openbtn {
+    position: absolute;
+    float: left;
+    margin-right: 1vw;
 }
 
 .Nav {
@@ -107,3 +125,4 @@ a:hover {
 @media only screen and (max-width: 700px) {
     #NewPass {font-size: 18px;}
 }
+
