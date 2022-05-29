@@ -8,8 +8,11 @@ function type(value) {
     else if (value == 1) {
         set = "1234567890"
     }
-    else {
+    else if (value == 2) {
         set = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefqhijklmnopqrstuvwxyz";
+    }
+    else {
+        return 0;
     }
     return set;
 }
