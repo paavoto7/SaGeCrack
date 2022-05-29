@@ -1,0 +1,109 @@
+
+
+#time {
+    color:darkorange;
+    font-size: max(5rem,4vw);
+}
+
+#result {
+    font-size: clamp(.5vw,4rem,5rem);
+}
+
+#grah {
+    width: 50%;
+    text-align: center; 
+    display: block;
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    background-color: rgba(6, 56, 78, 0.7);
+    margin: 2vw;
+    overflow: hidden;
+}
+
+.closebtn {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    cursor: pointer;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.Nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    float: left;
+    display: block;
+    height: 100%;
+    transition: 0.5s;
+    width: 0px;
+    overflow-x: hidden;
+    background-color: dimgrey;
+}
+
+.Nav a {
+    padding-top: 1vw;
+    display: block;
+    color: white;
+    padding-left: 1vw;
+    font-size: 30px;
+}
+
+a:hover {
+    font-weight: bolder;
+    color: white;
+    font-size: 35px;
+}
+
+@media only screen and (max-width: 700px) {
+    .Nav a {font-size: 18px;}
+}
+
+#but {
+    width: 70%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.gen {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#lay {
+    text-align: center; 
+    background-color: gray;
+    height: 90vh;
+}
+
+#NewPass {
+    font-size: 40px;
+    background-color: rgba(255,255,255,.6);
+    display: inline-block;
+    text-align: center;
+    overflow: auto;
+}
+
+#Pass {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+@media only screen and (max-width: 700px) {
+    #NewPass {font-size: 18px;}
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        {% block script %}{% endblock %}
+    </head>
+    <body>
+        <div class="Nav" id="Nav">
+            <span class="closebtn" onclick="CloseNav()">&times;</span>
+            <a href="/">Home</a>
+            <a href="/generator">Generator</a>
+            <a href="/cracker">Cracker</a>
+        </div>
+        <button onclick="OpenNav()" class="openbtn">&#9776;</button>
+        {% block body %}{% endblock %}
+        <script src="static/nav.js"></script>
+    </body>
+</html>

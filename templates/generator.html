@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Generator
+{% endblock %}
+
+{% block body %}
+    <div id="lay">
+        <input class="gen" type="number" id="length" placeholder="0" autocomplete="off">
+        <select class="gen" id="type">
+            <option disabled selected>Type</option>
+            <option value="0">All</option>
+            <option value="1">Digits</option>
+            <option value="2">Letters</option>
+        </select>
+        <button id="but" onclick="NewPassw()">Submit</button>
+        <div id="Pass">
+            <input readonly id="NewPass" placeholder="Password">
+            <button onclick="clip()" style="display:inline-block;">Copy</button>
+        </div>
+    </div>
+    <script>
+    function clip() {
+        passw = document.getElementById("NewPass").value;
+        navigator.clipboard.writeText(passw);
+        alert("Copied");
+    }
+    </script>
+    <script src="static/pass.js"></script>
+{% endblock %}
