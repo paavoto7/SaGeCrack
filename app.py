@@ -1,10 +1,16 @@
-from flask import Flask, redirect, render_template, request, jsonify
+from re import X
+from flask import Flask, redirect, render_template, request, jsonify, session
+from flask_session import Session
 
 from functions import cracker # generator
+from database import login
 
 # Configure application
 app = Flask(__name__)
 
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 @app.route("/")
 def cracking():
@@ -46,6 +52,27 @@ def gen():
 # 
 #         passw = generator(int(type), int(length))
 #         return render_template("generator.html", passw=passw)
+
+
+@app.route("/login", methods=["GET", "POST"])
+def log():
+
+    session.clear()
+
+    if request.method =="GET":
+        return render_template("login.html")
+    else:
+        uname = request.form.get("uname")
+        passw = request.form.get("passw")
+        # check if credidentials provided
+        if not uname or not passw:
+            return redirect("/login")
+        islogged = login(uname, passw)
+        if islogged == False:
+            return redirect("/login")
+        else:
+            session["user_id"] = islogged["id"]
+            return render_template("index.html")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@ from time import perf_counter
 import string
 from itertools import product
 import secrets
+from functools import wraps
+from flask import g, request, redirect
 
 
 def typpe(type):
@@ -48,6 +50,15 @@ def cracker(passw, type):
             return ret, round(elapsed,2)
     # If no match is found i.e. wrong type
     return "Error", 405 
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if g.user is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 # def generator(type, length):
