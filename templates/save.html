@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/save.js"></script>
+{% endblock %}
+
+
+{% block body %}
+    <div>
+        <input name="service" type="text" autocomplete="off" autofocus placeholder="Service">
+        <input name="name" type="text" autocomplete="off" autofocus placeholder="Username">
+        <input name="password" type="password" autocomplete="off" autofocus placeholder="Password">
+        <button id="savebut" type="submit">Save</button>
+    </div>
+    <p id="sucs"></p>
+{% endblock %}

@@ -17,6 +17,11 @@
         <div id="Pass">
             <input readonly id="NewPass" placeholder="Password">
             <button onclick="clip()" style="display:inline-block;">Copy</button>
+            {% if session["user_id"] %}
+            <form action="/save" method="get">
+                <button>Save</button>
+            </form>
+            {% endif %}
         </div>
     </div>
     <script>

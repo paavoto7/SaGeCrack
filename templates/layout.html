@@ -11,11 +11,21 @@
     <body>
         <div class="Nav" id="Nav">
             <span class="closebtn" onclick="CloseNav()">&times;</span>
+            {% if session["user_id"] %}
             <a href="/">Home</a>
             <a href="/generator">Generator</a>
             <a href="/cracker">Cracker</a>
+            <a href="/save">Save passwords</a>
+            {% endif %}
+            {% if not session["user_id"] %}
             <a href="/login">Login</a>
+            {% endif %}
         </div>
+        {% if session["user_id"] %}
+            <form action="/logout" method="post">
+                <button type="submit" id="logout">Logout</button>  
+            </form>
+        {% endif %}
         <button onclick="OpenNav()" class="openbtn">&#9776;</button>
         {% block body %}{% endblock %}
         <script src="static/nav.js"></script>
