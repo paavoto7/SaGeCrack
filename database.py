@@ -1,8 +1,5 @@
 from sqlalchemy import create_engine, Table, text
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import Blueprint
-
-bp = Blueprint("database", __name__)
 
 engine = create_engine("sqlite:///test.db")
 
