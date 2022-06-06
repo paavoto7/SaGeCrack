@@ -27,4 +27,5 @@ function NewPassw() {
         result += set.charAt(Math.floor(Math.random() * set.length));
     }
     document.getElementById("NewPass").value = result;
+    $("#copy").val(result);
 }

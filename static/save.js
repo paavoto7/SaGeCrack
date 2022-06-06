@@ -1,4 +1,11 @@
 
+$(function() {
+    $("input[name='password']").keypress(function(e) {
+        if (e.which == 13) {
+            $("#savebut").click();
+        }
+    });
+});
 
 $(function() {
     $("#savebut").on("click", function() {

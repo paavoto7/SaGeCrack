@@ -7,6 +7,14 @@ from project.database import register, login
 bp = Blueprint("auth", __name__)
 
 
+# Ensure that logout actually logs the user out
+@bp.after_request
+def after_request(response):
+    # Make sure no caching
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    return response
+
+
 @bp.route("/register", methods=["POST", "GET"])
 def reg():
     # If get return the page
@@ -20,6 +28,7 @@ def reg():
             return False
         regstat = register(name, newpass)
         if regstat == True:
+            session["user_id"] = login(name, newpass)
             return redirect("/")
         
 
@@ -31,6 +40,7 @@ def log():
 
     if request.method =="GET":
         return render_template("login.html")
+        
     else:
         uname = request.form.get("uname")
         passw = request.form.get("passw")
@@ -42,15 +52,15 @@ def log():
         islogged = login(uname, passw)
         # If not locked or some error
         if islogged == False:
-            return redirect("login")
+            return redirect("/login")
         else:
             # remember user in session
-            session["user_id"] = islogged["id"]
-            return render_template("index.html")
+            session["user_id"] = islogged
+            return redirect("/")
+
 
 @bp.route("/logout", methods=["POST"])
-@login_required
 def logout():
     # Forget session
     session.clear()
-    return redirect("login")
+    return redirect("/login")

@@ -1,25 +1,28 @@
 
 from flask import Flask, redirect, render_template, request, jsonify, session
-from flask_session import Session
 from flask import Blueprint
 
 bp = Blueprint("pages", __name__)
 
-from project.functions import cracker, login_required # generator
-from project.database import login, register, save
+from project.functions import cracker, login_required
+from project.database import save, get_saved
 
-# Configure application
-app = Flask(__name__)
-
+# Ensure that caching is disables
+@bp.after_request
+def after_request(response):
+    # Make sure no caching
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    return response 
 
 @bp.route("/")
+@login_required
 def cracking():
     return render_template("index.html")
 
 
 @bp.route("/cracker")
 def crack():
-    # Return page if get
+    # Return page
     return render_template("cracker.html")
 
 
@@ -34,24 +37,9 @@ def cracked():
     return jsonify(result=past[0], time=past[1])
 
 
-@bp.route("/generator", methods=["GET","POST"])
+@bp.route("/generator")
 def gen():
-    if request.method == "GET":
-        return render_template("generator.html")
-#    else:
-#
-#         length = request.form.get("length")
-#         # Check if password provided
-#         if not length:
-#             return redirect("/generator")
-# 
-#         type = request.form.get("type")
-#         # Check if type provided
-#         if not type:
-#             return redirect("/generator")
-# 
-#         passw = generator(int(type), int(length))
-#         return render_template("generator.html", passw=passw)
+    return render_template("generator.html")
     
 
 @bp.route("/save", methods=["POST", "GET"])
@@ -70,11 +58,34 @@ def saving():
         name = request.form["name"]
         password = request.form["password"]
         id = int(session["user_id"])
+        
         # Pass to the save function
         booli = save(id, name, service, password)
         # Return the boolean value
         return jsonify(result=booli)
 
 
-if __name__ == "__main__":
-    app.run(ssl_context='adhoc')
+# Transfer the password over from the register page to the save page
+@bp.route("/hidsave", methods=["POST"])
+@login_required
+def hidsave():
+    transfer = request.form.get("copy")
+    return render_template("save.html", transfer=transfer)
+
+
+# Search for the saved passwords
+@bp.route("/search")
+@login_required
+def searching():
+    search = request.args.get("q", default='', type=str)
+    result = get_saved(search, session["user_id"])
+    return jsonify(result)
+
+
+# Get the passwords and the usernames
+@bp.route("/info")
+@login_required
+def info():
+    service = request.args.get("service", default="1", type=str)
+    result = get_saved(service, session["user_id"])
+    return jsonify(result)

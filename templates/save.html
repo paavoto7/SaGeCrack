@@ -1,18 +1,49 @@
 {% extends "layout.html" %}
 
+{% block title %}
+    Save
+{% endblock %}
 
 {% block script %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="static/save.js"></script>
+    <script src="static/search.js"></script>
 {% endblock %}
 
 
 {% block body %}
-    <div>
+    <div id="save">
         <input name="service" type="text" autocomplete="off" autofocus placeholder="Service">
-        <input name="name" type="text" autocomplete="off" autofocus placeholder="Username">
-        <input name="password" type="password" autocomplete="off" autofocus placeholder="Password">
-        <button id="savebut" type="submit">Save</button>
+        <input name="name" type="text" autocomplete="off" placeholder="Username">
+        {% if transfer is defined %}
+        <input name="password" type="password" autocomplete="off" placeholder="Password" value="{{ transfer }}">
+        {% else %}
+        <input name="password" type="password" autocomplete="off" placeholder="Password">
+        {% endif %}
+        <button id="savebut" type="submit" style="line-height:0px;">Save</button>
+    </div>
+    <div id="srchdb">
+        <input id="search" type="text" placeholder="Service">
+        <input id="additional" type="text" placeholder="Username" style="visibility: hidden;">
+        <ul class="list"></ul>
+    </div>
+    <div id="shows">
+        <table id="showsearch">
+            <thead>
+                <tr class="tbcol">
+                    <th>Service</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tbcol">
+                    <td id="service"></td>
+                    <td id="username"></td>
+                    <td id="srcpassword"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <p id="sucs"></p>
 {% endblock %}

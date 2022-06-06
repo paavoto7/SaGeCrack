@@ -9,7 +9,7 @@
         {% block script %}{% endblock %}
     </head>
     <body>
-        <div class="Nav" id="Nav">
+        <nav class="Nav" id="Nav">
             <span class="closebtn" onclick="CloseNav()">&times;</span>
             {% if session["user_id"] %}
             <a href="/">Home</a>
@@ -19,8 +19,9 @@
             {% endif %}
             {% if not session["user_id"] %}
             <a href="/login">Login</a>
+            <a href="/register">Register</a>
             {% endif %}
-        </div>
+        </nav>
         {% if session["user_id"] %}
             <form action="/logout" method="post">
                 <button type="submit" id="logout">Logout</button>  

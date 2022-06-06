@@ -11,7 +11,7 @@ $(function() {
             type: $("select[name='type']").val()
         }, function(data) {
             $("#result").val(data.result);
-            $("#time").text(data.time)
+            $("#time").text(data.time);
             $("#subm").prop("disabled", false);
         });
     });

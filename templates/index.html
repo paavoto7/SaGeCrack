@@ -1,9 +1,24 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Hello
+    Home
 {% endblock %}
 
 {% block body %}
-    <h1>Hello World</h1>
+    <header>
+        <h1 style="text-align: center; font-size: max(2.5rem,5vw); font-family: 'Trebucher-MS', sans-serif";">Paavo-Secure</h1>
+    </header>
+    <div id="plain">
+        <header><h3>Why was this created?</h3></header>
+        <p>This site was created for the Final Project of the <a href="https://cs50.harvard.edu/x/">CS50</a> by Harvard.
+            CS50 put aside, you can find some useful security tools here
+            including password generator, cracker and saver. The site was created
+            using Flask on the backend with HTML, CSS and JavaScript on the frontend.<br><br>
+            <b>Disclaimer:</b><br>The emphasis was on the functionalities of the page (i.e. the backend 
+            Python and frontend JavaScript functions) over the UI/UX.
+        </p>
+        <footer>
+            <h5>Created by Paavoto&#169;</h5>
+        </footer>
+    </div>
 {% endblock %}
