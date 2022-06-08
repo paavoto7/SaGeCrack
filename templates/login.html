@@ -10,12 +10,17 @@
 {% endblock %}
 
 {% block body %}
+    {% for message in get_flashed_messages() %}
+        <h1 style="color: red;">{{ message }}</h1>
+    {% endfor %}
     <div class="logreg">
         <form action="/login" method="post">
-            <header><h1>Log in</h1></header>
+            <header>
+                <h1 style="font-size: clamp(1rem, 1rem + 1.7vw, 2.3rem);margin-bottom: 10px;">Log in</h1>
+            </header>
             <input name="uname" type="text" autocomplete="off" required placeholder="Username">
             <input name="passw" type="password" autocomplete="off" required placeholder="Password">
-            <button class="logbut" id="logbut" type="submit">Login</button>
+            <button class="logbut" id="logbut" type="submit">Log in</button>
         </form>
         <hr style="margin: 5px;">
         <header style="margin:20px; margin-bottom:0px">If not yet registered:</header>

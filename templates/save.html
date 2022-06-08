@@ -12,38 +12,34 @@
 
 
 {% block body %}
-    <div id="save">
-        <input name="service" type="text" autocomplete="off" autofocus placeholder="Service">
-        <input name="name" type="text" autocomplete="off" placeholder="Username">
-        {% if transfer is defined %}
-        <input name="password" type="password" autocomplete="off" placeholder="Password" value="{{ transfer }}">
-        {% else %}
-        <input name="password" type="password" autocomplete="off" placeholder="Password">
-        {% endif %}
-        <button id="savebut" type="submit" style="line-height:0px;">Save</button>
+    <div id="saveflex">
+        <div id="save">
+            <header class="savehead">Save passwords</header>
+            <input name="service" type="text" autocomplete="off" autofocus placeholder="Service">
+            <input name="name" type="text" autocomplete="off" placeholder="Username">
+            {% if transfer is defined %}
+            <input name="password" type="password" autocomplete="off" placeholder="Password" value="{{ transfer }}">
+            {% else %}
+            <input name="password" type="password" autocomplete="off" placeholder="Password">
+            {% endif %}
+            <button id="savebut" type="submit" style="line-height:0px;">Save</button>
+        </div>
+        <div id="srchdb">
+            <header class="savehead">Search for passwords</header>
+            <input id="search" type="text" placeholder="Service">
+            <input id="additional" type="text" placeholder="Username" style="visibility: hidden;">
+            <table id="showsearch">
+                <thead>
+                    <tr class="tbcol">
+                        <th>Service</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <p id="sucs"></p>
     </div>
-    <div id="srchdb">
-        <input id="search" type="text" placeholder="Service">
-        <input id="additional" type="text" placeholder="Username" style="visibility: hidden;">
-        <ul class="list"></ul>
-    </div>
-    <div id="shows">
-        <table id="showsearch">
-            <thead>
-                <tr class="tbcol">
-                    <th>Service</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="tbcol">
-                    <td id="service"></td>
-                    <td id="username"></td>
-                    <td id="srcpassword"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <p id="sucs"></p>
 {% endblock %}

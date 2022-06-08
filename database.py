@@ -13,6 +13,7 @@ def login(name, passw):
         else:
             return result["id"]
 
+
 def register(name, passw):
     with engine.connect() as conn:
         try:
@@ -32,6 +33,7 @@ def save(id, name, service, passw):
             return True
         except:
             return False
+
 
 def get_saved(service, id):
     with engine.connect() as conn:

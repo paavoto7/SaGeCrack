@@ -10,18 +10,31 @@
 {% endblock %}
 
 {% block body %}
-    <div id="inp">
-        <input type="text" name="crackp" placeholder="Password" autocomplete="off" required>
-        <select required name="type">
-            <option disabled selected value="3">Type</option>
-            <option value="0">All</option>
-            <option value="1">Digits</option>
-            <option value="2">Letters</option>
-        </select>
-        <button id="subm" onclick="disable()" type="submit">Crack</button>
-    </div>
-    <div id="grah">
-        <input readonly id="result">
-        <p id="time"></p>
+    <div>
+        <div id="inp">
+            <header class="head" style="font-size: clamp(2.5rem, 1.15rem + 6vw, 4.3rem);">Cracker</header>
+            <input type="text" name="crackp" placeholder="Password" autocomplete="off" required>
+            <select required name="type">
+                <option disabled selected value="3">Type</option>
+                <option value="0">All</option>
+                <option value="1">Digits</option>
+                <option value="2">Letters</option>
+            </select>
+            <button id="subm" onclick="disable()" type="submit">Crack</button>
+        </div>
+        <aside id="expl">
+            <header><h4>How?</h4></header>
+            <p>
+                This cracker is a so called brute-force cracker. <br>
+                The function is implemented in Python with the
+                aid of its modules. The data is passed through AJAX
+                with jQuery.
+            </p>
+        </aside>
+        <div id="grah">
+            <label for="result" style="display:block;">The password is:</label>
+            <input readonly id="result">
+            <p class="time">Time to crack the password is <p id="time" class="time"></p></p>
+        </div>
     </div>
 {% endblock %}

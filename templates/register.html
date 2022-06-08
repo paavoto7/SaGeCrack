@@ -1,7 +1,10 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div class="logreg">
+{% for message in get_flashed_messages() %}
+        <h1 style="color: red;">{{ message }}</h1>
+    {% endfor %}
+    <div class="logreg">
         <form action="/register" method="post">
             <input name="newname" type="text" autocomplete="off" required placeholder="Username">
             <input name="newpass" type="password" autocomplete="off" required placeholder="Password">

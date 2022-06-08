@@ -7,20 +7,26 @@ $(function() {
             q: $("#search").val(),
         },  function(data) {
             let html = '';
-            // Loop through the receiver JSON data
+            // Loop through the received JSON data
             for (let i in data) {
                 let serv = data[i].service;
+                let user = data[i].username;
+                let passw = data[i].password;
                 // Make the data formatted as a list item
-                html += '<li class="item">' + serv + "</li>";
+                html += "<tr class='tbcol'>";
+                html += "<td>" + serv + "</td>";
+                html += "<td>" + user + "</td>";
+                html += "<td>" + passw + "</td>";
+                html += "<tr>";
             }
-            $("ul").html(html);
+            $("tbody").html(html);
         });
     });
 });
 
 
 // Fetch additional data
-$(function() {
+/*$(function() {
     $(".list").click(function() {
         var serv = $(this).find(".item").html();
         $.getJSON("/info", {
@@ -50,3 +56,4 @@ $(function() {
         });
     });
 });
+*/

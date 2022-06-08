@@ -5,11 +5,20 @@
 {% endblock %}
 
 {% block body %}
-    <header>
-        <h1 style="text-align: center; font-size: max(2.5rem,5vw); font-family: 'Trebucher-MS', sans-serif";">Paavo-Secure</h1>
-    </header>
-    <div id="plain">
-        <header><h3>Why was this created?</h3></header>
+    <div id="homehead">
+        <header>
+            <h1>Paavo-Secure</h1>
+        </header>
+        <p style="font-size: clamp(1rem, 0.475rem + 2.34vw, 1.7rem);">
+            Making the usage of web services more secure.
+        </p>
+        <p>
+            <a href="/generator">Generator</a>
+            <a href="/cracker">Cracker</a>
+        </p>
+    </div>
+    <aside id="plain">
+        <header><h3>About</h3></header>
         <p>This site was created for the Final Project of the <a href="https://cs50.harvard.edu/x/">CS50</a> by Harvard.
             CS50 put aside, you can find some useful security tools here
             including password generator, cracker and saver. The site was created
@@ -20,5 +29,5 @@
         <footer>
             <h5>Created by Paavoto&#169;</h5>
         </footer>
-    </div>
+    </aside>
 {% endblock %}

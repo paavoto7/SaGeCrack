@@ -1,54 +1,108 @@
+/*HOME PAGE*/
+
 * {
     box-sizing: border-box;
 }
 
+#homehead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#homehead h1 {
+    text-align: center;
+    font-size: max(2.5rem,5vw);
+    font-family: 'Trebucher-MS', sans-serif;
+    margin-bottom: 0px;
+}
+
+#homehead a {
+    text-decoration: none;
+    color: black;
+    border-color: black;
+    border-radius: 18px;
+    border-style: solid;
+    padding: 8px 11px;
+    margin-inline: 4px;
+}
+
+#homehead a:hover {
+    background-color: rgb(255, 119, 0);
+    color: white;
+}
+
 #plain {
+    position: absolute;
+    top: 150px;
     text-align: left;
-    width: 60%;
-    margin: auto;
+    width: 20%;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 5px;
     padding-right: 5px;
     border-style: solid;
     border-width: thin;
+    display: inline-block;
+    margin-left: 5px;
 }
 
-#plain header, #plain footer {
-    text-align: left;
+@media only screen and (max-width: 700px) {
+    #plain {display: none;}
 }
 
-#time {
-    color:darkorange;
-    font-size: max(5rem,4vw);
+/* Cracker */
+
+#grah {
+    top: 5px;
+    width: 70%;
+    text-align: center; 
+    margin: auto;
+    overflow: hidden;
 }
 
 #result {
     text-align: center;
-    width: 80%;
-    margin-top: 5%;
-    height: 40vh;
+    width: 80%; 
+    padding: 20px;
+    margin-top: 30px;
     font-size: clamp(.5vw,4rem,5rem);
     background-color: #c9c9c9;
+    border: none;
+    border-radius: 15px;
 }
 
-#grah {
-    float: right;
-    top: 5px;
-    width: 70%;
-    height: 80vh;
-    text-align: center; 
-    background-color: rgba(6, 56, 78, 0.7);
-    margin: 5%;
-    overflow: hidden;
+.time {
+    color:black;
+    font-size: clamp(1rem, 0.475rem + 2.34vw, 1.7rem);
+    margin-top: 10px;
+}
+
+#expl {
+    float: left;
+    width: 20%;
+    position: absolute;    
+    padding-right: 10px; 
+    top: 20%;
 }
 
 #inp {
-    margin-top: 5vh;
-    float: left;
-    width: 10%;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: auto;
+    margin-top: 30px;
 }
 
-.closebtn {
+#inp input,
+#inp select,
+#inp button {
+    padding: 10px;
+    margin: 5px;
+}
+
+/* NAV */
+
+#closebtn {
     position: absolute;
     right: 10px;
     top: 0px;
@@ -56,74 +110,108 @@
     float: left;
     font-size: 40px;
     font-weight: bold;
+    display: none;
 }
 
-.openbtn {
+#openbtn {
     position: absolute;
     float: left;
-    margin-right: 1vw;
-    top: .5vw;
-    left: .5vw;
+    display: none;
+    text-align: right;
 }
 
 .Nav {
-    position: fixed;
-    top: 0;
-    left: 0;
+    margin: -8px;
     z-index: 1;
+    display: block;
+    overflow: hidden;
+    background-color: black;
+}
+
+.Nav a,
+.Nav button {
     float: left;
     display: block;
-    height: 100%;
-    transition: 0.5s;
-    width: 0px;
-    overflow-x: hidden;
-    background-color: dimgrey;
+    color: white;
+    padding: 16px 14px;
+    margin: 3px;
+    font-size: 20px;
+    text-decoration: none;
 }
 
-.Nav a {
-    padding-top: 1vw;
-    display: block;
-    color: white;
-    padding-left: 1vw;
-    font-size: 30px;
+#home {
+    background-color: rgb(255, 119, 0);
+    padding: 10px 8px;
+    margin: 6px;
+    margin-top: 9px;
+    border-radius: 16px;
 }
 
-.Nav a:hover {
-    font-weight: bolder;
-    color: white;
-    font-size: 35px;
+.Nav a:hover,
+.Nav button:hover {
+    background-color: rgb(30, 30, 30);
+    color: lightgray;
+}
+
+#logout {
+    float: right;
+    border-radius: 6px;
+    border-color: rgb(255, 119, 0);
+    text-align: center;
+    padding: 10px 8px;
+    margin: 6px;
+    margin-top: 9px;
+    cursor: pointer;
+    background-color: transparent;
 }
 
 @media only screen and (max-width: 700px) {
-    .Nav a {font-size: 18px;}
+    .Nav a, .Nav button {display: none;}
+    .Nav {height: 5vh;}
+    #openbtn {display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;}
 }
 
-#but {
+@media only screen and (max-width: 700px) {
+    .Nav a {font-size: 14px;}
+    .mobile {height: auto; position: absolute; width: 101vw;
+    top: 0;}
+    .mobile a,
+    #closebtn,
+    .mobile #logout {display: block; float: none; text-align: left;}
+}
+
+#but,
+#cop {
     width: 100px;
-    background-color: #4CAF50;
+    background-color: rgb(255, 119, 0);
     color: white;
     padding: 14px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right;
-    margin-left: -100px;
-    margin-right: 50px;
+    margin-inline: 5px;;
+}
+
+#but:hover, #cop:hover {
+    background-color: rgb(220, 106, 6);
 }
 
 .gen {
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 3px 0;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     box-sizing: border-box;
+}
+
+.gen input {
+    width: fit-content;
 }
 
 #lay {
     text-align: center; 
-    background-color: gray;
-    height: 90vh;
     width: 70%;
     margin: auto;
     margin-top: 2.5vh;
@@ -137,10 +225,15 @@
     display: inline-block;
     text-align: center;
     overflow: auto;
+    margin-top: 10px;
 }
 
 #Pass {
     display: inline-block;
+}
+
+#savebutgen {
+    float: left;
 }
 
 @media only screen and (max-width: 700px) {
@@ -152,25 +245,10 @@
     }
 }
 
-#logout {
-    position: absolute;
-    float: right;
-    border: 1px gray;
-    text-align: center;
-    padding: 5px 5px;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-}
-
-#logout:hover {
-    background-color: lightgrey;
-}
-
 .logreg {
     width: 40%;
     position: absolute;
-    top: 5%;
+    top: 17%;
     left: 15%;
     right: 45%;
     border: none;
@@ -244,10 +322,21 @@
     height: 22px;
 }
 
+.savehead {
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 #srchdb {
+    display: flex;
+    flex-direction: column;
     float: left;
     margin-top: 25px;
     margin-left: 25px;
+    width: calc(80% - 330px);
+    margin-right: 5%;
 }
 
 #showsearch {
@@ -259,24 +348,36 @@
 #showsearch,
 .tbcol td,
 .tbcol th {
-    border-style: solid;
     border-collapse:collapse;
+    border-style: solid;
+    border-color: black;
 }
 
  #shows{
     display: inline-block;
 }
 
-#lay h1,
-#lay h4 {
-    margin: 0px;
+#saveflex {
+    display: flex;
+}
+
+@media only screen and (max-width: 700px) {
+    #saveflex {flex-direction: column;}
+    #srchdb {width: 330px;}
+}
+
+.head {
+    margin: 4px 0px;
+    color: black;
+    font-weight: bold;
+    font-family: georgia, sans-serif;
 }
 
 #registerMod {
     position: fixed;
-    left: 20%;
-    right: 20%;
-    width: 60%;
+    left: 15%;
+    right: 45%;
+    width: 40%;
     background-color: white;
     top: 10%;
 }
@@ -294,4 +395,5 @@
     display:none;
     top: 0;
     bottom: 0;
+    margin: -8px;
 }

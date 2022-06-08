@@ -1,5 +1,5 @@
 
-from flask import Flask, redirect, render_template, request, jsonify, session
+from flask import redirect, render_template, request, jsonify, session
 from flask import Blueprint
 
 bp = Blueprint("pages", __name__)

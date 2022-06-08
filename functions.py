@@ -4,6 +4,8 @@ from itertools import product
 from functools import wraps
 from flask import redirect, session
 
+
+# Get the type for the password generator
 def typpe(type):
     tyyppi = []
     if type == 0:
@@ -28,7 +30,6 @@ def cracker(passw, type):
     # Convert password into tuple
     pWord = tuple(passw)
 
-
     # Start a counter to measure the time to crack the password
     start = perf_counter()
     
@@ -49,7 +50,7 @@ def cracker(passw, type):
     # If no match is found i.e. wrong type
     return "Error", 405 
 
-
+# This function can be found on https://flask.palletsprojects.com/en/2.1.x/patterns/viewdecorators/
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
