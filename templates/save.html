@@ -23,6 +23,7 @@
             <input name="password" type="password" autocomplete="off" placeholder="Password">
             {% endif %}
             <button id="savebut" type="submit" style="line-height:0px;">Save</button>
+            <p id="sucs"></p>
         </div>
         <div id="srchdb">
             <header class="savehead">Search for passwords</header>
@@ -40,6 +41,11 @@
                 </tbody>
             </table>
         </div>
-        <p id="sucs"></p>
     </div>
+    <script>
+        /* Prevent form resubmission */
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, "/save");
+        }
+    </script>
 {% endblock %}

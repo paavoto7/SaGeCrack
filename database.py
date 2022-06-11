@@ -1,10 +1,14 @@
 from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash, generate_password_hash
 
 engine = create_engine("sqlite:///project/test.db")
 
+
 def login(name, passw):
+    # Connect to the database
     with engine.connect() as conn:
+        # Get one user
         result = conn.execute("SELECT * FROM users WHERE username=?", (name,)).fetchone()
         if not result:
             return False
@@ -16,12 +20,18 @@ def login(name, passw):
 
 def register(name, passw):
     with engine.connect() as conn:
+        # Try to register a new user
         try:
+            # Create the password hash
             newpass = generate_password_hash(passw)
             conn.execute("INSERT INTO users (username, password) VALUES (?,?)", name, newpass)
             return True
-        except:
-            return False
+        # Check for usernames already taken
+        except IntegrityError as e:
+            return "Username already taken"
+        # Chekc for other errors
+        except Exception:
+            return e
 
 
 def save(id, name, service, passw):

@@ -25,17 +25,28 @@ def reg():
         # Get the credidentials
         name = request.form.get("newname")
         newpass = request.form.get("newpass")
+
+        # Check if credidentials provided
+        if not name or not newpass:
+            flash("Username or password missing!")
+            return render_template("login.html")
+
         # Check if confirm is the same
         if newpass != request.form.get("confpass"):
             # flash if incorrect
             flash("Passwords do not match!")
             return render_template("login.html")
+
         # Hand over to the function
         regstat = register(name, newpass)
+        
         if regstat == True:
             # Sing the user into a session and redirect
             session["user_id"] = login(name, newpass)
             return redirect("/")
+        else:
+            flash(regstat)
+            return render_template("login.html")
         
 
 
