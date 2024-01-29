@@ -30,6 +30,8 @@ fills the password input with it.
 
 ##### **Password cracker**
 
+The algorithm used in this is as inefficient as it could possibly be.
+It is purely a demonstration of brute forcing passwords.
 Password cracker takes as input the password and the type of the password.
 User then presses crack-button and waits for the cracking to be made. It displays
 the password then and the time took to crack it. Too long passwords aren't suggested
