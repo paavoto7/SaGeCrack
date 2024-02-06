@@ -4,8 +4,8 @@ from flask import Blueprint
 
 bp = Blueprint("pages", __name__)
 
-from project.functions import cracker, login_required
-from project.database import save, get_saved
+from .functions import cracker, login_required
+from .database import save, get_saved
 
 # Ensure that caching is disables
 @bp.after_request

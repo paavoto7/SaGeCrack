@@ -1,8 +1,13 @@
+import sys
+
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash, generate_password_hash
 
-engine = create_engine("sqlite:///project/test.db")
+try:
+    engine = create_engine("sqlite:///./users.db")
+except:
+    print("Run create_db.py!")
 
 
 def login(name, passw):

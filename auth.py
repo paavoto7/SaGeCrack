@@ -1,8 +1,8 @@
 from flask import redirect, render_template, request, session, flash
 from flask import Blueprint
 
-from project.functions import login_required
-from project.database import register, login
+from .functions import login_required
+from .database import register, login
 
 bp = Blueprint("auth", __name__)
 

@@ -3,7 +3,7 @@ from flask_session import Session
 
 def create_app():
     app = Flask(__name__)
-    from project import pages, auth
+    from . import pages, auth
 
     app.register_blueprint(pages.bp)
     app.register_blueprint(auth.bp)
